@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Form Ubah Data</title>
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div>
+      <h3 style="margin-left: 50px;">Ubah Data</h3>
+      <div>
+        <form
+          action="#"
+          th:action="@{/simpan}"
+          th:object="${mhs}"
+          method="post"
+        >
+          <table>
+            <tr>
+              <td class="title-column">NIM</td>
+              <td class="value-column">
+                <input
+                  type="text"
+                  th:field="*{nim}"
+                  id="nim"
+                  class="column-input"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="title-column">Nama</td>
+              <td class="value-column">
+                <input
+                  type="text"
+                  th:field="*{nama}"
+                  id="nama"
+                  class="column-input"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="title-column">Jurusan</td>
+              <td class="value-column">
+                <input
+                  type="text"
+                  th:field="*{jurusan}"
+                  id="jurusan"
+                  class="column-input"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="title-column">Alamat</td>
+              <td class="value-column">
+                <input
+                  type="text"
+                  th:field="*{alamat}"
+                  id="alamat"
+                  class="column-input"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="title-column"></td>
+              <td class="value-column">
+                <input type="submit" value="Simpan" id="column-submit" />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

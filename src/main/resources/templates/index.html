@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Aplikasi Perekaman Data Mahasiswa</title>
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- <a href= >Tambah Data</a> -->
+    <button
+      id="tambah"
+      onclick="window.location.href='/tambah';"
+      type="submit"
+      style="font-size: 17px; color: white;"
+    >
+      Tambah data
+    </button>
+
+    <div th:switch="${mhs}">
+      <div>
+        <h2 th:case="null">Tidak ada data</h2>
+        <div th:case="*">
+          <table style="border: 1px solid darkgray; border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th class="head-table">NIM</th>
+                <th class="head-table">Nama</th>
+                <th class="head-table">Jurusan</th>
+                <th class="head-table">Alamat</th>
+                <th class="head-table">Opsi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="mhs : ${mhs}">
+                <td th:text="${mhs.nim}" class="border-table-center"></td>
+                <td th:text="${mhs.nama}" class="border-table-center"></td>
+                <td th:text="${mhs.jurusan}" class="border-table-center"></td>
+                <td th:text="${mhs.alamat}" class="border-table-center"></td>
+                <td id="opsi-column">
+                  <a
+                    class="btn-opsi"
+                    style="text-decoration: none;"
+                    th:href="@{/ubah/{nim}(nim=${mhs.nim})}"
+                  >
+                    Ubah
+                  </a>
+                  <a
+                    class="btn-opsi"
+                    style="text-decoration: none;"
+                    th:href="@{/hapus/{nim}(nim=${mhs.nim})}"
+                    >Hapus</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
